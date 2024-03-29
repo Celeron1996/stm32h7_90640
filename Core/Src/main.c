@@ -22,7 +22,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "stdio.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -68,7 +68,11 @@ void StartDefaultTask(void *argument);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+int fputc(int c, FILE * stream)
+{
+	HAL_UART_Transmit(&huart4, (const uint8_t *)&c, 1, 10);
+	return c;
+}
 /* USER CODE END 0 */
 
 /**
@@ -299,7 +303,8 @@ void StartDefaultTask(void *argument)
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+		printf("1234567!\r\n");
+    osDelay(200);
   }
   /* USER CODE END 5 */
 }
